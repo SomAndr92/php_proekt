@@ -1,0 +1,17 @@
+{
+    "name": "andrey/proekt",
+    "description": "aaa",
+    "autoload": {
+        "psr-4": {
+            "Andrey\\Proekt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aaa"
+        }
+    ],
+    "require": {
+        "steampixel/simple-php-router": "^0.7.1"
+    }
+}
