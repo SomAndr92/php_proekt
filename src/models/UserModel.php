@@ -29,5 +29,12 @@ class UserModel{
 }
     public function userAuth($login, $pass) {
         $db = DBconnect::connect();
+        $query = $db->query("SELECT * FROM `users` WHERE `login` = '$login' AND `pass` = '$pass' ");
+            if($query->num_rows > 0){
+                $row = $query->fetch_assoc();
+                echo 'Добро пожаловать';
+            } else{
+                echo 'неверные данные';
+            }
     }
 }

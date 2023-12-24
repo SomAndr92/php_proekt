@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="proekt\style.css">
 </head>
 <body>
     <input type="text" placeholder="login" id="login"> <br>
     <input type="text" placeholder="name" id="name"> <br>
     <input type="text" placeholder="password" id="pass"> <br>
-    <button id="regBtn">reg</button>
+    <button class="but1" id="regBtn">reg</button>
 
     <script>
 
