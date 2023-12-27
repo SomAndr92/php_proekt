@@ -1,7 +1,12 @@
 <?php
 
-namespace Proekt\controllers;
-use Proekt\models\UserModel;
+namespace Andrey\Proekt\controllers;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+
+
+use Andrey\Proekt\models\UserModel;
 
 class UserController{
 
@@ -17,15 +22,26 @@ class UserController{
     }
 }
     public function auth($json){
-        echo $json['login'];
-
-            if(!empty($json['login']) and !empty($json['pass']) and !empty($json['pass'])) {
+        if(!empty($json['login']) and !empty($json['pass']) ) {
         $um = new UserModel;
-        $res = $um->userAuth($json['login'], $json['pass'], $json['name']);
+        $res = $um->userAuth($json['login'], $json['pass']);
+
         if($res) {
-            echo json_encode($res);
+        $key = 'haha';
+        $payload = [
+            'iss' => 'http://proekt',
+            'login' => $res['payload']['login'],
+            'id' => $res['payload']['id'],
+        ];
+        $jwt = JWT::encode($payload, $key, 'HS256');
+        
+            echo json_encode(["status" => "ok",
+                "payload" =>[
+                    "accessToken" => $jwt
+                ]
+                ]);
         }
+    } 
     }
     } 
 
-}

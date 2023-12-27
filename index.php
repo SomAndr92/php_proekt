@@ -3,7 +3,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Steampixel\Route;
-use Proekt\controllers\UserController;
+
+use Andrey\Proekt\controllers\UserController;
+
 
 /**
 *
@@ -33,9 +35,15 @@ Route::add("/api/reg",function() {
 Route::add("/api/auth",function() {
     $json = json_decode(file_get_contents("php://input"),true);
     $uc = new UserController;
-    $uc->reg($json);
+    $uc->auth($json);
 }, 'POST');
 
+Route::add("/ul", function() {
+    $json = json_decode(file_get_contents("php://input"), true);
+    if(!empty($json)) {
+        include 'src/views/userList.php';
+    }
+}, 'POST');
 Route::run('/');
 
 

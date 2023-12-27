@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit83d02e91c8cbc886c800390e04edb3aa
 {
     public static $prefixLengthsPsr4 = array (
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'A' => 
         array (
             'Andrey\\Proekt\\' => 14,
@@ -14,6 +18,10 @@ class ComposerStaticInit83d02e91c8cbc886c800390e04edb3aa
     );
 
     public static $prefixDirsPsr4 = array (
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'Andrey\\Proekt\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',

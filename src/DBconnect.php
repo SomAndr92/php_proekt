@@ -1,6 +1,6 @@
 <?php
 
-namespace Proekt;
+namespace Andrey\Proekt;
 
 class DBconnect{
 

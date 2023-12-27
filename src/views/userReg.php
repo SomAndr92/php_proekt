@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="proekt\style.css">
+    <link rel="stylesheet" href="../src/views/css/style.css">
 </head>
 <body>
     <input type="text" placeholder="login" id="login"> <br>
@@ -32,10 +32,12 @@
                 method: 'POST',
                 body: resp
             })
-                .then(response => response.text())
+                .then(response => response.json())
 
                 .then(data => {
-                    console.log(data);
+                    if(data.status == "ok") {
+                        alert("ok");
+                    }
                 })
                 .catch(error => {
                     console.log(error);

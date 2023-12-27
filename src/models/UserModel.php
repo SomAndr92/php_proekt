@@ -1,7 +1,7 @@
 <?php
 
-namespace Proekt\models;
-use Proekt\DBconnect;
+namespace Andrey\Proekt\models;
+use Andrey\Proekt\DBconnect;
 
 
 class UserModel{
@@ -25,16 +25,26 @@ class UserModel{
             "discription"=>"Login exist"
         ]];
     }
-
 }
+
     public function userAuth($login, $pass) {
         $db = DBconnect::connect();
-        $query = $db->query("SELECT * FROM `users` WHERE `login` = '$login' AND `pass` = '$pass' ");
-            if($query->num_rows > 0){
-                $row = $query->fetch_assoc();
-                echo 'Добро пожаловать';
-            } else{
-                echo 'неверные данные';
-            }
+        $res = $db->query("SELECT * FROM `users` WHERE `login` = '$login' AND `pass` = '$pass' ");
+            
+        $res = mysqli_fetch_assoc($res);
+        if($res) {
+            return ["status"=> "ok",
+            "payload" =>[
+                "login" =>$login,
+                "name" => $res['name'],
+                "id" => $res["id"],
+            ]
+            ];
+        } else {
+            return ['status'=> 'null',
+            'payload'=>[
+                "discription"=>"Login exist"
+            ]];
+        }
     }
 }

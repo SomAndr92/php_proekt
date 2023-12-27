@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/views/css/style.css">
 </head>
 <body>
     <h1>авторизация</h1>
@@ -33,9 +33,12 @@
                 method: 'POST',
                 body: resp
             })
-                .then(response => response.text())
+                .then(response => response.json())
 
                 .then(data => {
+                    if(data.status == "ok") {
+                        localStorage.setItem("at", data.payload.accessToken);
+                    }
                     console.log(data);
                 })
                 .catch(error => {
