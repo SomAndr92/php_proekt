@@ -38,6 +38,7 @@
                 .then(data => {
                     if(data.status == "ok") {
                         localStorage.setItem("at", data.payload.accessToken);
+                        window.location.replace("http://proekt/ul");
                     }
                     console.log(data);
                 })

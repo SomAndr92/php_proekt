@@ -43,7 +43,7 @@ class UserModel{
         } else {
             return ['status'=> 'null',
             'payload'=>[
-                "discription"=>"Login exist"
+                "error" => "not found"
             ]];
         }
     }

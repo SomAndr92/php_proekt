@@ -3,7 +3,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Steampixel\Route;
-
+use Andrey\Proekt\DBconnect;
 use Andrey\Proekt\controllers\UserController;
 
 
@@ -25,6 +25,11 @@ Route::add("/auth", function(){
     include 'src/views/userAuth.php';
 });
 
+/**
+*
+*POST Metods
+*
+*/
 Route::add("/api/reg",function() {
     $json = json_decode(file_get_contents("php://input"),true);
     $uc = new UserController;
@@ -39,18 +44,37 @@ Route::add("/api/auth",function() {
 }, 'POST');
 
 Route::add("/ul", function() {
-    $json = json_decode(file_get_contents("php://input"), true);
-    if(!empty($json)) {
-        include 'src/views/userList.php';
+
+    include 'src/views/usersList.php';
+
+});
+
+Route::add("/api/verify", function() {
+    
+$json = json_decode(file_get_contents("php://input"), true);
+$uc = new UserContoller;
+$uc->auth($json);
+
+},"post");
+
+
+Route::add("/api/getUsers", function() {
+    $db = DBconnect::connect();
+    $res = $db->query("SELECT * FROM `users`");
+
+    $json = [];
+
+    while($ress = mysqli_fetch_assoc($res)) {
+        array_push($json, $ress);
     }
-}, 'POST');
+
+    echo json_encode($json);
+
+});
+
 Route::run('/');
 
 
-/**
-*
-*POST Metods
-*
-*/
+
 
 

@@ -41,7 +41,15 @@ class UserController{
                 ]
                 ]);
         }
-    } 
+
+    } else {
+        echo json_encode(["status" => "error",
+            "payload" => [
+                "desc" => "empty"
+            ]
+        ]);
+    }
+
     }
     } 
 
